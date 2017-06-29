@@ -166,5 +166,8 @@ CREATING WELCOME MESSAGE WITH QUICK RESPONSE:
 				Go to provided URL. Copy and paste pin into CMD.
 			
 			5. cmd: twurl -X DELETE /1.1/direct_messages/welcome_messages/destroy.json?id=########
+			NOTE: ############ is the returned welcome_message_id from when you created the id.
+
+4. Make new message the welcome message (see above section, #2
 		
 
