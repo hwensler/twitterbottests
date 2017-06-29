@@ -1,8 +1,8 @@
 Setting up a welcome message with quick replies in twitter dm.
 -- Heather Nolis/Heather Wensler --
 
-CREATING A BASIC WELCOME MESSAGE.
 
+CREATE A BASIC WELCOME MESSAGE.
 
 1 - Create the message.
 
@@ -84,26 +84,27 @@ CREATING WELCOME MESSAGE WITH QUICK RESPONSE:
 		{
 		  "welcome_message" : {
 			"message_data": {
-				"text": "VOTE:",
+				"text": "ULTIMATE SHOWDOWN! WHO ARE YOU VOTING FOR?",
 				"quick_reply": {
 				  "type": "options",
 				  "options": [
 					{
-					  "label": "Clark",
+					  "label": "🙀Clark🙀",
 					  "description": "SNACKSSSSSSSSSSSSS",
 					  "metadata": "external_id_1"
 					},
 					{
-					  "label": "Lewis",
+					  "label": "💅Lewis💅",
 					  "description": "YOL9X",
 					  "metadata": "external_id_2"
 					},
 					{
-					  "label": "Honeydew Melon",
-					  "description": "Anything u can do I can do better",
+					  "label": "🏂Honeydew Melon🏂",
+					  "description": "anything u can do I can do better",
 					  "metadata": "external_id_3"
-					]
 					}
+					]
+				}
 				}
 			}
 		}
@@ -169,5 +170,8 @@ CREATING WELCOME MESSAGE WITH QUICK RESPONSE:
 			NOTE: ############ is the returned welcome_message_id from when you created the id.
 
 4. Make new message the welcome message (see above section, #2
+
+DO THIS ALL WITH A LINK:
+https://twitter.com/messages/compose?recipient_id=##########&welcome_message_id=#####
 		
 
