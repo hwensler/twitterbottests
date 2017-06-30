@@ -1,0 +1,125 @@
+How to use an image in twitter api direct messages
+
+Note: images can only be used once and expire after some time
+
+1. Upload the image (from: https://dev.twitter.com/rest/reference/post/media/upload)
+
+	Post to:
+	https://upload.twitter.com/1.1/media/upload.json
+
+	use form-data.
+
+	key: media
+	value: file (your image file)
+	
+	Return:
+	{
+		"media_id": "#############,
+		"media_id_string": "###############",
+		"size": 26935,
+		"expires_after_secs": 86400,
+		"image": {
+			"image_type": "image/jpeg",
+			"w": 495,
+			"h": 449
+		}
+	}
+	
+2. Send the messages (from: https://dev.twitter.com/rest/reference/post/direct_messages/events/new)
+
+	Post to:
+	https://api.twitter.com/1.1/direct_messages/events/new.json
+
+	Body:
+		{
+		  "event": {
+			"type": "message_create",
+			"message_create": {
+			  "target": {
+				"recipient_id": "########"
+			  },
+			  "message_data": {
+				"text": "wut",
+				"attachment": {
+					"type": "media",
+					"media": {
+						"id": "########"
+					}
+				 }
+				}
+			}
+		  }
+		}
+	
+	Response:
+	{
+    "event": {
+        "type": "message_create",
+        "id": "###############",
+        "created_timestamp": "#############33",
+        "message_create": {
+            "target": {
+                "recipient_id": "###############"
+            },
+            "sender_id": "#################",
+            "message_data": {
+                "text": "wut https://t.co/o6wsrHHsgl",
+                "entities": {
+                    "hashtags": [],
+                    "symbols": [],
+                    "user_mentions": [],
+                    "urls": [
+                        {
+                            "url": "https://t.co/o6wsrHHsgl",
+                            "expanded_url": "https://twitter.com/messages/media/880861335860400131",
+                            "display_url": "pic.twitter.com/o6wsrHHsgl",
+                            "indices": [
+                                4,
+                                27
+                            ]
+                        }
+                    ]
+                },
+                "attachment": {
+                    "type": "media",
+                    "media": {
+                        "id": ###############,
+                        "id_str": "##################",
+                        "indices": [
+                            4,
+                            27
+                        ],
+                        "media_url": "https://ton.twitter.com/1.1/ton/data/dm/880861335860400131/880860645364645889/dRc_g0WF.jpg",
+                        "media_url_https": "https://ton.twitter.com/1.1/ton/data/dm/880861335860400131/880860645364645889/dRc_g0WF.jpg",
+                        "url": "https://t.co/o6wsrHHsgl",
+                        "display_url": "pic.twitter.com/o6wsrHHsgl",
+                        "expanded_url": "https://twitter.com/messages/media/880861335860400131",
+                        "type": "photo",
+                        "sizes": {
+                            "medium": {
+                                "w": 495,
+                                "h": 449,
+                                "resize": "fit"
+                            },
+                            "thumb": {
+                                "w": 150,
+                                "h": 150,
+                                "resize": "crop"
+                            },
+                            "large": {
+                                "w": 495,
+                                "h": 449,
+                                "resize": "fit"
+                            },
+                            "small": {
+                                "w": 340,
+                                "h": 308,
+                                "resize": "fit"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
