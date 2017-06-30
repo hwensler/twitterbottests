@@ -1,29 +1,54 @@
 How to use an image in twitter api direct messages
 
-Note: images can only be used once and expire after some time
 
 1. Upload the image (from: https://dev.twitter.com/rest/reference/post/media/upload)
 
 	Post to:
 	https://upload.twitter.com/1.1/media/upload.json
-
 	use form-data.
 
-	key: media
-	value: file (your image file)
-	
-	Return:
-	{
-		"media_id": "#############,
-		"media_id_string": "###############",
-		"size": 26935,
-		"expires_after_secs": 86400,
-		"image": {
-			"image_type": "image/jpeg",
-			"w": 495,
-			"h": 449
+	FOR AN IMAGE YOU'LL USE ONLY ONCE
+
+		key: media
+		value: file (your image file)
+		
+		Return:
+		{
+			"media_id": "#############,
+			"media_id_string": "###############",
+			"size": 26935,
+			"expires_after_secs": 86400,
+			"image": {
+				"image_type": "image/jpeg",
+				"w": 495,
+				"h": 449
+			}
 		}
-	}
+	
+	FOR AN IMAGE YOU'LL USE MORE THAN ONCE
+		Note: All 3 steps must be completed.
+		1.
+			command			INIT
+			total_bytes		(size in bites)
+			media_type		image/jpg (can be many types!)
+			media_category	dm_image
+			shared			true
+		
+			Get the media id from this response!!
+		
+		2. 
+			command			APPEND
+			shared			true
+			media_category	dm_image
+			media_id		(id from previous response)
+			media_data		(the actual file)
+			media_segment	0 (or whatever number in a sequential upload)
+			
+		3.
+			command			FINALIZE
+			media_id		(media id from INIT response)
+		
+	
 	
 2. Send the messages (from: https://dev.twitter.com/rest/reference/post/direct_messages/events/new)
 
