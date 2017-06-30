@@ -27,7 +27,9 @@ How to use an image in twitter api direct messages
 	
 	FOR AN IMAGE YOU'LL USE MORE THAN ONCE
 		Note: All 3 steps must be completed.
-		1.
+		I altered steps on the twitterdev site to fit my needs.
+		
+		1. (from https://dev.twitter.com/rest/reference/post/media/upload-init)
 			command			INIT
 			total_bytes		(size in bites)
 			media_type		image/jpg (can be many types!)
@@ -36,7 +38,7 @@ How to use an image in twitter api direct messages
 		
 			Get the media id from this response!!
 		
-		2. 
+		2. (from https://dev.twitter.com/rest/reference/post/media/upload-append.html)
 			command			APPEND
 			shared			true
 			media_category	dm_image
@@ -44,7 +46,7 @@ How to use an image in twitter api direct messages
 			media_data		(the actual file)
 			media_segment	0 (or whatever number in a sequential upload)
 			
-		3.
+		3. from (https://dev.twitter.com/rest/reference/post/media/upload-finalize.html)
 			command			FINALIZE
 			media_id		(media id from INIT response)
 		
