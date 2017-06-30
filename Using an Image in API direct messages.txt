@@ -29,6 +29,8 @@ How to use an image in twitter api direct messages
 		Note: All 3 steps must be completed.
 		I altered steps on the twitterdev site to fit my needs.
 		
+		You must use chunked media upload (from https://dev.twitter.com/rest/reference/post/media/upload-init.html)
+		
 		1. (from https://dev.twitter.com/rest/reference/post/media/upload-init)
 			command			INIT
 			total_bytes		(size in bites)
